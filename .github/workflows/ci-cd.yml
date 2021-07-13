@@ -39,9 +39,9 @@ jobs:
         python-version: [3.8]
         node-version: ['12.x']
         appname: ['aws-codedeploy']
-        deploy-group: ['staging']
+        deploy-group: ['prod']
         s3-bucket: ['passarelli-codedeploy-deployments']
-        s3-filename: ['staging-aws-codedeploy-${{ github.sha }}']
+        s3-filename: ['personal-site-aws-codedeploy-${{ github.sha }}']
 
     needs: buildAndTest
     steps:
