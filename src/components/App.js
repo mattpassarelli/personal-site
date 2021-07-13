@@ -1,6 +1,6 @@
 import { Heading } from "@chakra-ui/layout";
-import "./App.css";
-import LinksBar from "./components/LinksBar";
+import "../styles/App.css";
+import LinksBar from "./LinksBar";
 
 function App() {
   return (

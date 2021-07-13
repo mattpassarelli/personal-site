@@ -1,4 +1,4 @@
-import "./LinksBar.css";
+import "../styles/LinksBar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGithub,
