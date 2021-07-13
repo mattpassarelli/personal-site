@@ -40,7 +40,7 @@ jobs:
         node-version: ['12.x']
         appname: ['aws-codedeploy']
         deploy-group: ['prod']
-        s3-bucket: ['passarelli-codedeploy-deployments']
+        s3-bucket: ['passarelli-personal-site-codedeploy-deployments']
         s3-filename: ['personal-site-aws-codedeploy-${{ github.sha }}']
 
     needs: buildAndTest
