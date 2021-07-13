@@ -1,23 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import { Heading } from "@chakra-ui/layout";
+import "./App.css";
+import LinksBar from "./components/LinksBar";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Heading as="h2" size="3xl">
+        Work in progress :)
+      </Heading>
+      <div className="linkBar">
+        <LinksBar />
+      </div>
     </div>
   );
 }

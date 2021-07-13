@@ -1,0 +1,38 @@
+.links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+}
+
+/* unvisited link */
+a:link {
+  color: #ffffff;
+}
+
+/* visited link */
+a:visited {
+  color: #ffffff;
+}
+
+.link {
+  padding-bottom: 10px;
+  transition: 0.3s;
+}
+
+.link:hover {
+  color: rgb(18, 159, 224);
+  cursor: pointer;
+  -moz-transform: translate(0, -3px);
+  -ms-transform: translate(0, -3px);
+  -o-transform: translate(0, -3px);
+  -webkit-transform: translate(0, -3px);
+  transform: translate(0, -3px);
+}
+
+.linksLabel {
+  color: rgb(130, 146, 153);
+  font-size: small;
+  font-style: italic;
+}
