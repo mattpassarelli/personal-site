@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Box, Flex, Text, Button, Stack } from "@chakra-ui/react";
+import { Link, Box, Flex, Text, Stack } from "@chakra-ui/react";
 import MenuToggle from "./MenuToggle";
 import Logo from "./Images/Logo";
 import "../styles/Header.css";
