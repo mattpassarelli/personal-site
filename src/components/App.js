@@ -1,13 +1,12 @@
-import { Heading } from "@chakra-ui/layout";
 import "../styles/App.css";
 import LinksBar from "./LinksBar";
+import NavBar from "./Header";
 
 function App() {
   return (
     <div className="App">
-      <Heading as="h2" size="3xl">
-        Work in progress :)
-      </Heading>
+        <NavBar />
+      Work in Progress :) 
       <div className="linkBar">
         <LinksBar />
       </div>

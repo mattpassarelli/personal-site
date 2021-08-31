@@ -6,6 +6,7 @@ import {
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
 
+//TODO: Use the Header as a reference for scaling
 export default function LinksBar() {
   return (
     <div className="links">
