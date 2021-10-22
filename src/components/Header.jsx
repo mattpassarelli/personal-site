@@ -3,6 +3,7 @@ import { Link, Box, Flex, Text, Stack } from "@chakra-ui/react";
 import MenuToggle from "./MenuToggle";
 import Logo from "./Images/Logo";
 import "../styles/Header.css";
+import { EMAIL } from "../utils/Constants";
 
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -21,23 +22,6 @@ const NavBar = (props) => {
   );
 };
 
-const MenuItem = ({
-  children,
-  isLast,
-  to = "/",
-  as = {},
-  size = "xl",
-  ...rest
-}) => {
-  return (
-    <Link to>
-      <Text display="block" {...rest} fontSize={size} className="menuItemLinks">
-        {children}
-      </Text>
-    </Link>
-  );
-};
-
 const MenuLinks = ({ isOpen }) => {
   return (
     <Box
@@ -48,12 +32,31 @@ const MenuLinks = ({ isOpen }) => {
         spacing={8}
         align="center"
         justify={["center", "space-between", "flex-end", "flex-end"]}
-        direction={["column", "row", "row", "row"]}
+        direction={["row", "column", "row"]}
         pt={[4, 4, 0, 0]}
       >
-        <MenuItem to="/how">My Projects </MenuItem>
-        <MenuItem to="/faetures">About Me </MenuItem>
-        <MenuItem to="/pricing">Contact Me </MenuItem>
+        <Link className="menuItemLinks" style={{ textDecoration: "none" }}>
+          <Text display="block" fontSize={"xl"}>
+            My Projects
+          </Text>
+        </Link>
+
+        <Link className="menuItemLinks" style={{ textDecoration: "none" }}>
+          <Text display="block" fontSize={"xl"}>
+            About Me
+          </Text>
+        </Link>
+
+        <Link
+          className="menuItemLinks"
+          href={`mailto:${EMAIL}`}
+          isExternal
+          style={{ textDecoration: "none" }}
+        >
+          <Text display="block" fontSize={"xl"}>
+            Contact Me
+          </Text>
+        </Link>
       </Stack>
     </Box>
   );

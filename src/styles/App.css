@@ -13,9 +13,7 @@
   justify-content: flex-end;
   font-size: calc(10px + 2vmin);
   max-width: fit-content;
-  margin-left: 2.5%;
-  border-right: 2.5px solid rgb(18, 159, 224);
-  padding-right: 15px;
+  margin-left: 1%;
   margin-top: auto;
-  margin-bottom: 2.5%;
+  margin-bottom: 1%;
 }

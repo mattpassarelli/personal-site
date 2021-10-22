@@ -1,3 +1,22 @@
 .menuItemLinks {
-    color: rgb(18, 159, 224);
+  color: rgb(18, 159, 224);
+}
+
+/* unvisited link */
+a:link {
+  color: #ffffff;
+}
+
+/* visited link */
+a:visited {
+  color: #ffffff;
+}
+
+.menuItemLinks:hover {
+  color: rgb(43, 213, 255);
+  -moz-transform: translate(0, -3px);
+  -ms-transform: translate(0, -3px);
+  -o-transform: translate(0, -3px);
+  -webkit-transform: translate(0, -3px);
+  transform: translate(0, -3px);
 }
