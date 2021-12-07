@@ -6,24 +6,8 @@ import {
   faLinkedin,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
-import { Link, Box, Flex, Text, Stack } from "@chakra-ui/react";
+import { Box, Flex, Stack } from "@chakra-ui/react";
 
-const MenuItem = ({
-  children,
-  isLast,
-  to = "/",
-  as = {},
-  size = "xl",
-  ...rest
-}) => {
-  return (
-    <Link to>
-      <Text display="block" {...rest} fontSize={size} className="menuItemLinks">
-        {children}
-      </Text>
-    </Link>
-  );
-};
 
 const MenuLinks = ({ isOpen }) => {
   return (
@@ -39,24 +23,17 @@ const MenuLinks = ({ isOpen }) => {
         direction={["column"]}
         pt={[4, 4, 0, 0]}
       >
-        <MenuItem>
-          {" "}
-          <a href="https://www.github.com/mattpassarelli">
-            <FontAwesomeIcon icon={faGithub} className="link" size={'2x'}/>
-          </a>{" "}
-        </MenuItem>
-        <MenuItem>
-          {" "}
-          <a href="https://www.linkedin.com/in/matthew-passarelli/">
-            <FontAwesomeIcon icon={faLinkedin} className="link" size={'2x'}/>
-          </a>{" "}
-        </MenuItem>
-        <MenuItem>
-          {" "}
-          <a href="https://www.youtube.com/channel/UCZE4xIPZpJBAVwituwfteGw">
-            <FontAwesomeIcon icon={faYoutube} className="link" size={'2x'}/>
-          </a>{" "}
-        </MenuItem>
+        <a href="https://www.github.com/mattpassarelli">
+          <FontAwesomeIcon icon={faGithub} className="link" size={"lg"} />
+        </a>
+
+        <a href="https://www.linkedin.com/in/matthew-passarelli/">
+          <FontAwesomeIcon icon={faLinkedin} className="link" size={"lg"} />
+        </a>
+
+        <a href="https://www.youtube.com/channel/UCZE4xIPZpJBAVwituwfteGw">
+          <FontAwesomeIcon icon={faYoutube} className="link" size={"lg"} />
+        </a>
       </Stack>
     </Box>
   );
@@ -84,7 +61,7 @@ const NavBarContainer = ({ children, ...props }) => {
 //TODO: Use the Header as a reference for scaling
 const LinksBar = (props) => {
   return (
-    <NavBarContainer {...props} >
+    <NavBarContainer {...props}>
       <MenuLinks />
     </NavBarContainer>
   );

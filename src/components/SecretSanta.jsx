@@ -1,4 +1,3 @@
-import { useForm } from "react-hook-form";
 import React, { useState } from "react";
 import LinksBar from "./LinksBar";
 import NavBar from "./Header";
@@ -17,6 +16,7 @@ import {
 } from "@chakra-ui/react";
 import "../styles/SecretSanta.css";
 
+//Get the count of people playing
 const Stepper = (props) => {
   const { changePeopleCount } = props;
   return (
@@ -37,74 +37,104 @@ const Stepper = (props) => {
   );
 };
 
-const SomeComponent = ({ person }) => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-
-  console.log(name, email);
+//dynamically generated input fields for each person
+const IndividualPerson = (props) => {
+  const { person, peopleMap } = props;
   return (
     <div>
       <FormControl id="email">
         <Text>Enter data for person {person}</Text>
+        {/* This will come in handy later when we do the randomizing logic */}
+        {person === "1" && (
+          <Text fontSize="xs">
+            Enter your info here to avoid issues with the randomizing
+          </Text>
+        )}
         <FormLabel>Name</FormLabel>
-        <Input type="name" placeholder="name" onChange={setName} />
+        <Input
+          type="name"
+          placeholder="name"
+          onChange={(e) => {
+            const obj = peopleMap.find((o) => o.index === person);
+            obj.name = e.target.value;
+          }}
+        />
 
         <FormLabel>Email address</FormLabel>
-        <Input type="email" placeholder="email" onChange={setEmail} />
+        <Input
+          type="email"
+          placeholder="email"
+          onChange={(e) => {
+            const obj = peopleMap.find((o) => o.index === person);
+            obj.email = e.target.value;
+          }}
+        />
       </FormControl>
     </div>
   );
 };
 
 const SantaLogic = (props) => {
-  const { onSubmit, handleSubmit, isSubmitting } = props;
+  const { onSubmit, isSubmitting = false } = props;
 
   const [peopleCount, setPeopleCount] = useState(0);
   const [peopleMap, setPeopleMap] = useState([]);
 
+  //if removing a person, remove from the peopleMap
   const subtractPerson = () => {
     const newPeople = [...peopleMap];
     newPeople.splice(newPeople.length - 1, 1);
     setPeopleMap(newPeople);
   };
 
+  //if adding a person, add to the peopleMap
   const changePeopleCount = (value) => {
     setPeopleCount(value);
+    //check to see if we're subtracting or adding
     if (value > peopleCount) {
-      setPeopleMap([...peopleMap, value]);
+      setPeopleMap([...peopleMap, { index: value, name: "", email: "" }]);
     } else {
       subtractPerson();
     }
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <FormControl>
-        <Box w={800} p={4} m="20px auto">
-          <Stepper changePeopleCount={changePeopleCount} />
-          {peopleMap?.map((person, index) => (
-            <SomeComponent person={person} key={index} />
-          ))}
-        </Box>
-      </FormControl>
-      <Button mt={4} colorScheme="teal" isLoading={isSubmitting} type="submit">
+    <div>
+      <Box w={800} p={4} m="20px auto">
+        <Stepper changePeopleCount={changePeopleCount} />
+        {peopleMap?.map((person) => (
+          <IndividualPerson
+            person={person.index}
+            peopleMap={peopleMap}
+            key={person.index}
+          />
+        ))}
+      </Box>
+      <Button
+        mt={4}
+        colorScheme="teal"
+        isLoading={isSubmitting}
+        type="submit"
+        onClick={() => onSubmit(peopleMap)}
+      >
         Submit
       </Button>
-    </form>
+    </div>
   );
 };
 
 function SecretSanta() {
-  const {
-    handleSubmit,
-    formState: { isSubmitting },
-  } = useForm();
+  //is the form being submitted? spin the button
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
+  //submit the "form", will email players
   const onSubmit = (values) => {
+    setIsSubmitting(true);
     return new Promise((resolve) => {
       setTimeout(() => {
         alert(JSON.stringify(values, null, 2));
         resolve();
+        setIsSubmitting(false);
       }, 1000);
     });
   };
@@ -114,7 +144,7 @@ function SecretSanta() {
       <NavBar />
       <SantaLogic
         onSubmit={onSubmit}
-        handleSubmit={handleSubmit}
+        handleSubmit={onSubmit}
         isSubmitting={isSubmitting}
       />
       <div className="linkBar">
