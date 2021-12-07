@@ -41,6 +41,7 @@ const SomeComponent = ({ person }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
+  console.log(name, email);
   return (
     <div>
       <FormControl id="email">
@@ -96,8 +97,7 @@ const SantaLogic = (props) => {
 function SecretSanta() {
   const {
     handleSubmit,
-    register,
-    formState: { errors, isSubmitting },
+    formState: { isSubmitting },
   } = useForm();
 
   const onSubmit = (values) => {
