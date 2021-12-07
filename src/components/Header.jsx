@@ -4,6 +4,7 @@ import MenuToggle from "./MenuToggle";
 import Logo from "./Images/Logo";
 import "../styles/Header.css";
 import { EMAIL } from "../utils/Constants";
+import { Link as ReactRouterLink } from "react-router-dom";
 
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -47,14 +48,21 @@ const MenuLinks = ({ isOpen }) => {
           </Text>
         </Link>
 
+        <Link className="menuItemLinks" href={`mailto:${EMAIL}`} isExternal>
+          <Text display="block" fontSize={"xl"}>
+            Contact Me
+          </Text>
+        </Link>
+
         <Link
+          as={ReactRouterLink}
+          to="/secretsanta"
+          replace
           className="menuItemLinks"
-          href={`mailto:${EMAIL}`}
-          isExternal
           style={{ textDecoration: "none" }}
         >
           <Text display="block" fontSize={"xl"}>
-            Contact Me
+            Secret Santa!
           </Text>
         </Link>
       </Stack>
